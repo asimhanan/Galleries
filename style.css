@@ -23,18 +23,18 @@ body {
 .header {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    padding: 2 rem 0;
+    padding: 2rem 0;
     text-align: center;
-    border-bottom: 1 px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .t a{
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
     position: absolute;
-    top: 10 px;
-    right: 20 px;
+    top: 10px;
+    right: 20px;
 }
 .t a:hover{
     color: #000;
@@ -583,23 +583,22 @@ body {
 }
 
 .footer-note {
-    font-size: 0.8 rem;
-    color: rgba (255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
     font-style: italic;
 }
 .ta{
     position: absolute;
-    top: 60 px;
-    left: 20 px;
+    top: 60px;
+    right: 20px;
 }
 .ta a{
     color: #fff;
-    font-size: 1.2 rem;
+    font-size: 1.5rem;
     text-decoration: none;
     font-weight: bold;
 }
 .ta a:hover{
-    text-decoration: none;
     color: #000;
 }
 
