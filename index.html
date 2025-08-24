@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ring Sizer - Find Your Perfect Ring Size</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title">✨  RING SIZER</h1>
+            <p class="subtitle">Find Your Perfect Ring Size</p>
+        </div>
+    </header>
+    <div class="t"><a href="">Rings</a></div>
+    <div class="ta"><a href="https://asimhanan.github.io/NexoinGems/" >Gems</a></div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            
+            <!-- Instructions Card -->
+            <section class="instructions-card">
+                <h2 class="instructions-title">How to Use</h2>
+                <div class="instructions-content">
+                    <div class="instruction-step">
+                        <span class="step-number">1</span>
+                        <p>Place your existing ring on the circle below</p>
+                    </div>
+                    <div class="instruction-step">
+                        <span class="step-number">2</span>
+                        <p>Align the inner edge of your ring with the circle</p>
+                    </div>
+                    <div class="instruction-step">
+                        <span class="step-number">3</span>
+                        <p>Adjust the size using the controls until it matches perfectly</p>
+                    </div>
+                    <div class="instruction-step">
+                        <span class="step-number">4</span>
+                        <p>Click "Measure My Ring" to get your size</p>
+                    </div>
+                </div>
+                <div class="calibration-note">
+                    <p><strong>Important:</strong> For accurate measurements, ensure your screen brightness is at maximum and use the reference ruler below to calibrate.</p>
+                </div>
+            </section>
+
+            <!-- Ring Sizing Area -->
+            <section class="sizing-section">
+                <div class="sizing-card">
+                    
+                    <!-- Size Category Selection -->
+                    <div class="category-selection">
+                        <h3 class="category-title">Select Ring Size Category</h3>
+                        <div class="category-buttons">
+                            <button class="category-btn" data-category="small">Small (4-6)</button>
+                            <button class="category-btn active" data-category="medium">Medium (6-8)</button>
+                            <button class="category-btn" data-category="large">Large (8-17)</button>
+                        </div>
+                    </div>
+
+                    <!-- Ring Display Area -->
+                    <div class="ring-display-area">
+                        <div class="ring-container">
+                            <div class="grid-background"></div>
+                            <div class="ring-circle" id="ringCircle"></div>
+                            <div class="size-label" id="sizeLabel">Size 7 (17.3mm)</div>
+                        </div>
+                        
+                        <!-- Reference Ruler -->
+                        <div class="reference-ruler">
+                            <div class="ruler-line" id="rulerLine"></div>
+                            <p class="ruler-label">2.54cm reference</p>
+                        </div>
+                    </div>
+
+                    <!-- Size Controls -->
+                    <div class="size-controls">
+                        <button class="control-btn decrease" id="decreaseBtn">−</button>
+                        <div class="size-display">
+                            <span class="current-size" id="currentSize">Ring Size: 7</span>
+                        </div>
+                        <button class="control-btn increase" id="increaseBtn">+</button>
+                    </div>
+
+                    <!-- Fine Adjustment -->
+                    <div class="fine-adjustment">
+                        <label for="sizeSlider" class="slider-label">Fine Adjustment:</label>
+                        <input type="range" id="sizeSlider" class="size-slider" min="3" max="17" step="0.25" value="7">
+                        <div class="slider-values">
+                            <span>3</span>
+                            <span>17</span>
+                        </div>
+                    </div>
+
+                    <!-- Measure Button -->
+                    <div class="measure-section">
+                        <button class="measure-btn" id="measureBtn">MEASURE MY RING</button>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-card">
+                    <h2 class="results-title">Your Ring Size</h2>
+                    
+                    <!-- Primary Size Display -->
+                    <div class="primary-results">
+                        <div class="result-item">
+                            <span class="result-label">US Size</span>
+                            <span class="result-value primary" id="resultUSSize">7</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Diameter</span>
+                            <span class="result-value primary" id="resultDiameter">17.3mm</span>
+                        </div>
+                    </div>
+
+                    <!-- International Conversions -->
+                    <div class="international-results">
+                        <h3 class="international-title">International Sizes</h3>
+                        <div class="international-grid">
+                            <div class="international-item">
+                                <span class="international-label">UK</span>
+                                <span class="international-value" id="resultUKSize">N</span>
+                            </div>
+                            <div class="international-item">
+                                <span class="international-label">EU</span>
+                                <span class="international-value" id="resultEUSize">54</span>
+                            </div>
+                            <div class="international-item">
+                                <span class="international-label">JP</span>
+                                <span class="international-value" id="resultJPSize">14</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Size Chart Reference -->
+                    <div class="size-chart">
+                        <h3 class="chart-title">Size Chart Reference</h3>
+                        <div class="chart-table">
+                            <div class="chart-header">
+                                <span>US</span>
+                                <span>Diameter</span>
+                                <span>UK</span>
+                                <span>EU</span>
+                            </div>
+                            <div class="chart-row" id="chartRow">
+                                <span id="chartUS">7</span>
+                                <span id="chartDiameter">17.3mm</span>
+                                <span id="chartUK">N</span>
+                                <span id="chartEU">54</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="result-actions">
+                        <button class="action-btn secondary" id="resetBtn">Try Again</button>
+                        <button class="action-btn primary" id="saveBtn">Save Result</button>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Tips Section -->
+            <section class="tips-section">
+                <div class="tips-card">
+                    <h2 class="tips-title">Ring Sizing Tips</h2>
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <h4 class="tip-title">Best Time to Measure</h4>
+                            <p class="tip-text">Measure your ring size at the end of the day when your fingers are at their largest.</p>
+                        </div>
+                        <div class="tip-item">
+                            <h4 class="tip-title">Temperature Matters</h4>
+                            <p class="tip-text">Cold weather can shrink your fingers by up to half a size, while heat can expand them.</p>
+                        </div>
+                        <div class="tip-item">
+                            <h4 class="tip-title">Consider Ring Width</h4>
+                            <p class="tip-text">Wide rings (6mm+) typically require a size larger than narrow rings for comfort.</p>
+                        </div>
+                        <div class="tip-item">
+                            <h4 class="tip-title">Double Check</h4>
+                            <p class="tip-text">Measure multiple times and use different existing rings to ensure accuracy.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2023 Ring Sizer Tool</p>
+            <p class="footer-note">This tool provides approximate measurements. For precise sizing, consult a professional jeweler.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script1.js"></script>
+</body>
+</html>
+

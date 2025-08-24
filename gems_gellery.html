@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GemStone Gallery | Exquisite Gemstones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, #dadff6 0%, #8813fc 100%);
+    backdrop-filter: blur(10px);
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.t a{
+    color: rgb(11, 11, 11);
+    font-size: 1.2rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.t a:hover{
+    text-decoration: underline;
+    color: #f9f8f8;
+}
+.ta{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.ta a{
+    color: rgb(10, 10, 10);
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.ta a:hover{
+    text-decoration: underline;
+    color: #fefefe;
+}
+
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: rgba(11, 118, 4, 0.9);
+    font-weight: 400;
+    margin-left: 3rem;
+}
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
+            color: #fcfcfc;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            border-radius: 2px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-img {
+            position: relative;
+            height: 270px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .gem-logo {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #faf9f0, #fccb72);
+            background-size: cover;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #35068d;
+            font-weight: bold;
+            font-size: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .in-cart-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #27ae60;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 2;
+            display: none;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .product-description {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #4a6491, #2c3e50);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-summary {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgb(236, 233, 233);
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .cart-summary i {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-right: 10px;
+        }
+
+        #cart-count {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-right: 5px;
+        }
+
+        #cart-total {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .intro {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }   
+        .sa {
+            background-color: #27ae60;
+            text-align: center;
+            margin: 0 15px;
+            padding: 5px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        .sa h2 {
+            margin-bottom: 10px;
+            color: #030e81;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .as {
+            width: 8rem;
+            height: 8rem;
+            overflow: hidden;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }   
+        .as img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .as:hover {
+            transform: scale(1.1);
+        }
+        /* Footer */
+.footer {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer-text {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-note {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+.r{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 10px;
+    background: #ecf0f1;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.r1, .r2{
+    width: 45%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+.r1 img, .r2 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+h2{
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    margin-top: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+        @media (max-width: 768px) {
+            .products {
+                grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+             .t a {
+        font-size: 1rem;
+        top: 5px;
+        right: 5px;
+    }
+    .t a{
+        font-size: 1rem;
+        text-decoration: none;
+        font-style: bold;
+    }
+
+    .ta{
+        top: 5px;
+        left: 5px;
+    }
+    .ta a{
+        font-size: 1rem;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+            .products {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .cart-summary {
+                bottom: 10px;
+                left: 10px;
+                padding: 10px 15px;
+            }
+            .intro {
+                align-items: center;
+            }
+            .sa {
+                width: 20%;
+                margin: 10px 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .sa h2 {
+                font-size: 1rem;
+            }
+            .as {
+                width: 100%;
+                height: 100%;
+            }
+            .as img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .as:hover {
+                transform: scale(1.05);
+            }
+            .r{
+                flex-direction: column;
+            }
+            .r1, .r2{
+                width: 90%;
+                height: 300px;
+            }
+
+        }
+    </style>
+    
+</head>
+<body>
+        <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title">✨ Gem Gallery</h1>
+            <p class="subtitle">Check out our Gem collection</p>
+        </div>
+    </header>
+    <div class="t"><a href="https://asimhanan.github.io/NexoinGemsRings/">StoneRings</a></div>
+    <div class="ta"><a href="index.html" >RingSize</a></div>
+<!-- Round Gem Section -->
+    
+    <section class="intro">
+        <div class="sa">
+            <h2>Aqiq</h2>
+            <div class="as"><img src="aqiq_mix.jpg" alt="aqiq"> </div>
+        </div>
+        <div class="sa">
+            <h2>Ruby</h2>
+            <div class="as"><img src="rubymix.jpg" alt="Ruby"> </div>
+        </div>
+        <div class="sa">
+            <h2>Sapphire</h2>
+            <div class="as"><img src="sapphiremix.jpg" alt="Sapphire"> </div>
+        </div>
+        <div class="sa">
+            <h2>Diamond</h2>
+            <div class="as"><img src="Diamond x (1).jpg" alt="Diamond"> </div>
+        </div>
+    </section>
+    <h2>Stone Rocks</h2>
+    <section class="r">
+        <div class="r1"><img src="gemRocks.jpeg"></div>
+        <div class="r2"><img src="Tourmaline_mix.jpeg"></div>
+    </section>
+<section class="intro">
+        <div class="sa">
+            <h2>Fairoza</h2>
+            <div class="as"><img src="fairoz_mix.jpg" alt="fairoza"> </div>
+        </div>
+        <div class="sa">
+            <h2>Jad</h2>
+            <div class="as"><img src="jad_mix.jpg" alt="jad"> </div>
+        </div>
+        <div class="sa">
+            <h2>Ruby</h2>
+            <div class="as"><img src="rubymix.jpg" alt="ruby"> </div>
+        </div>
+        <div class="sa">
+            <h2>Merjan</h2>
+            <div class="as"><img src="marjan_mix.jpg" alt="merjan"> </div>
+        </div>
+    </section>
+
+    <section id="products" class="container">
+        <h2 class="section-title">Our Featured Gemstones</h2>
+        <div class="products">
+            <!-- Product cards will be generated by JavaScript -->
+        </div>
+    </section>
+
+    <div class="cart-summary">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count">0</span> items | Total: <span id="cart-total">$0.00</span>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2023 Gem Stone Gallery</p>
+            <p class="footer-note">This page has been esablished for Gem lovers</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample product data
+            const products = [
+                {
+                    id: 'm1',
+                    title: 'Emerald',
+                    description: 'Handcrafted yellow with certified Colombian emerald from our Turkish historical collection.',
+                    price: 149.99,
+                    image: 'Emarald 1.png',
+                    inCart: false
+                },
+                {
+                    id: 'm2',
+                    title: 'Sapphire Blue',
+                    description: 'Exquisite blue sapphire set in white gold, perfect for special occasions.',
+                    price: 199.99,
+                    image: 'Saphire 1.png',
+                    inCart: true
+                },
+                {
+                    id: 'm3',
+                    title: 'Ruby Red',
+                    description: 'Vibrant red ruby set in rose gold, symbolizing passion and love.',
+                    price: 179.99,
+                    image: 'ruby (1).jpg',
+                    inCart: false
+                },
+                {
+                    id: 'm4',
+                    title: 'Diamond Classic',
+                    description: 'Brilliant cut diamond set in platinum for timeless elegance.',
+                    price: 299.99,
+                    image: 'Diamond x (1).jpg',
+                    inCart: false
+                },
+                {
+                    id: 'm5',
+                    title: 'Amethyst Purple',
+                    description: 'Deep purple amethyst set in sterling silver, a royal choice.',
+                    price: 129.99,
+                    image: 'Amethyst.png',
+                    inCart: false
+                },
+                {
+                    id: 'm6',
+                    title: 'Topaz Yellow',
+                    description: 'Sky yellow topaz set in white gold, reminiscent of summer skies.',
+                    price: 159.99,
+                    image: 'topaz.jpg',
+                    inCart: false
+                },
+                {
+                    id: 'm7',
+                    title: 'Opal Shimmer',
+                    description: 'Iridescent opal with fiery flashes, set in yellow gold.',
+                    price: 189.99,
+                    image: 'Opal.jpg',
+                    inCart: false
+                },
+                {
+                    id: 'm8',
+                    title: 'Pearl Elegance',
+                    description: 'Cultured pearl set in a delicate silver design, perfect for formal events.',
+                    price: 169.99,
+                    image: 'pearl.jpeg',
+                    inCart: false
+                },
+                {
+                    id: 'm9',
+                    title: 'Lapis lazuli',
+                    description: 'Sky Lapis set in rose gold, bringing warmth to any collection.',
+                    price: 139.99,
+                    image: 'lajaward_1.jpg',
+                    inCart: false
+                },
+                {
+                    id: 'm10',
+                    title: 'Garnet Deep Red',
+                    description: 'Rich garnet set in vintage-inspired yellow gold setting.',
+                    price: 149.99,
+                    image: 'Garnet.png',
+                    inCart: false
+                },
+                {
+                    id: 'm11',
+                    title: 'Aquamarine Ocean',
+                    description: 'Light blue aquamarine set in white gold, capturing the essence of the sea.',
+                    price: 199.99,
+                    image: 'Aquamarine (2).png',
+                    inCart: false
+                },
+                {
+                    id: 'm12',
+                    title: 'Fairoza', //Tanzanite Violet
+                    description: 'Real Fairoza set in platinum, a truly unique piece.',
+                    price: 249.99,
+                    image: 'Fairoz_1.jpg',
+                    inCart: false
+                },
+                {
+                    id: 'm13',
+                    title: 'Peridot Green',
+                    description: 'Vibrant green peridot set in yellow gold, symbolizing nature and growth.',
+                    price: 129.99,
+                    image: 'Paridot 1.jpg',
+                    inCart: false
+                },
+                {
+                    id: 'm14',
+                    title: 'Zircon Blue',
+                    description: 'Brilliant blue zircon set in sterling silver, with exceptional fire.',
+                    price: 159.99,
+                    image: 'Diamond x (2).jpg',
+                    inCart: false
+                },
+                {
+                    id: 'm15',
+                    title: 'Tourmaline green',
+                    description: 'Delicate green tourmaline set in rose gold, for a romantic touch.',
+                    price: 179.99,
+                    image: 'Tourmaline.jpeg',
+                    inCart: false
+                },
+                {
+                    id: 'm16',
+                    title: 'Onyx Black',
+                    description: 'Jet black onyx set in modern white gold, for a bold statement.',
+                    price: 139.99,
+                    image: 'Onyx.jpeg',
+                    inCart: false
+                }
+            ];
+
+            const productsContainer = document.querySelector('.products');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+            
+            let cart = [];
+            
+            // Initialize the page
+            function init() {
+                renderProducts();
+                updateCartSummary();
+            }
+            
+            // Render product cards
+            function renderProducts() {
+                productsContainer.innerHTML = '';
+                
+                products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    
+                    productCard.innerHTML = `
+                        <div class="product-img">
+                            <img src="${product.image}" alt="${product.title}">
+                            <div class="gem-logo">Nexoin</div>
+                            ${product.inCart ? '<span class="in-cart-badge">In Cart</span>' : ''}
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">${product.title}</h3>
+                            <p class="product-description">${product.description}</p>
+                            <p class="product-price">$${product.price.toFixed(2)}</p>
+                            <a href="#" class="btn add-to-cart" data-id="${product.id}" data-title="${product.title}" data-price="${product.price}">
+                                ${product.inCart ? 'Remove from Cart' : 'Add to Cart'}
+                            </a>
+                        </div>
+                    `;
+                    
+                    productsContainer.appendChild(productCard);
+                });
+                
+                // Add event listeners to buttons
+                document.querySelectorAll('.add-to-cart').forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const id = this.getAttribute('data-id');
+                        const title = this.getAttribute('data-title');
+                        const price = parseFloat(this.getAttribute('data-price'));
+                        
+                        toggleProductInCart(id, title, price, this);
+                    });
+                });
+            }
+            
+            // Toggle product in cart
+            function toggleProductInCart(id, title, price, button) {
+                const index = cart.findIndex(item => item.id === id);
+                
+                if (index === -1) {
+                    // Add to cart
+                    cart.push({ id, title, price, quantity: 1 });
+                    button.textContent = 'Remove from Cart';
+                    button.parentElement.previousElementSibling.querySelector('.in-cart-badge').style.display = 'block';
+                } else {
+                    // Remove from cart
+                    cart.splice(index, 1);
+                    button.textContent = 'Add to Cart';
+                    const badge = button.parentElement.previousElementSibling.querySelector('.in-cart-badge');
+                    if (badge) badge.style.display = 'none';
+                }
+                
+                updateCartSummary();
+            }
+            
+            // Update cart summary
+            function updateCartSummary() {
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                const totalAmount = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                
+                cartCount.textContent = totalItems;
+                cartTotal.textContent = `$${totalAmount.toFixed(2)}`;
+            }
+            
+            // Initialize the page
+            init();
+        });
+    </script>
+</body>
+</html>
